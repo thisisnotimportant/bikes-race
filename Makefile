@@ -1,5 +1,5 @@
-build/bike: build build/main.o build/Bike.o build/Road.o
-	g++ -o build/bike build/main.o build/Bike.o build/Road.o
+build/bike: build build/main.o build/Bike.o build/Road.o build/Race.o
+	g++ -o build/bike build/main.o build/Bike.o build/Road.o build/Race.o
 
 build: 
 	mkdir -p build
@@ -13,10 +13,13 @@ build/Bike.o: src/Bike.cpp src/Bike.h
 build/Road.o: src/Road.cpp src/Road.h
 	g++ -c src/Road.cpp -o build/Road.o
 
+build/Race.o: src/Race.cpp src/Race.h
+	g++ -c src/Race.cpp -o build/Race.o
+
 all: build/bike
 
 clean:
-	rm -f build/main.o build/Bike.o build/Road.o build/bike
+	rm -f build/main.o build/Bike.o build/Road.o build/Race.o build/bike
 
 run:
 	./build/bike
