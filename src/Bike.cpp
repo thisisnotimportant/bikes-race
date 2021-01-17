@@ -44,7 +44,8 @@ bool Bike::pedal(const Road &road) {
     return false;
   }
 
-  static std::default_random_engine generator;
+  static std::random_device r;
+  static std::mt19937 generator(r());
   std::poisson_distribution<int> distribution(1.0);
   mPosition += distribution(generator);
 
